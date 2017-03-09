@@ -1,0 +1,63 @@
+{% extends "fuelcalc/base.html" %}
+{% block content %}
+	{% if error %}
+	<p  style="color:red; text-decoration:none;"><a href="/"> &#171; {{ error }} </a></p>
+	{% else %}
+	<div class="col-sm-6">
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th class="col-sm-4">Car Info</th>
+				<td class="col-sm-8">{{ responses.make }} {{ responses.model }} ({{ responses.year }})</td>
+			</tr>
+			<tr>
+				<th class="col-sm-4">Fuel Economy (weighted avg)</th>
+				<td class="col-sm-8">{{ gasInfo.avgMPG|floatformat:2 }} miles/gallon</td>
+			</tr>
+		</table>
+
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th class="col-sm-4">Trip Info</th>
+				<td class="col-sm-8">Driving from {{ responses.start_city }} to {{ responses.dest_city }}</td>
+			</tr>
+			<tr>
+				<th>Distance</th>
+				<td>{{ gasInfo.distance|floatformat:2 }} miles</td>
+			</tr>
+		</table>
+
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th class="col-sm-4">Gas Needed for Trip</th>
+				<td class="col-sm-8">{{ gasInfo.gasNeeded|floatformat:2 }} gallons</td>
+			</tr>
+			<tr>
+				<th class="col-sm-4">Trip Cost</th>
+				<td class="col-sm-8"><strong id="cost">${{ gasInfo.tripCost|floatformat:2 }}</strong></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-sm-6">
+		<h5>Splitting the fare? </h5>
+		<label class="radio-inline">
+			<input type="radio" name="people" id="1person" value="option1" checked>1
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="people" id="2people" value="option2">2
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="people" id="3people" value="option3">3
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="people" id="4people" value="option4">4
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="people" id="5people" value="option5">5
+		</label> people
+		<h3>You Pay: <span id="amt" style="color:red">$ {{ gasInfo.tripCost|floatformat:2 }}</span></h3>
+	</div>
+
+	{% endif %}
+
+{% endblock %}

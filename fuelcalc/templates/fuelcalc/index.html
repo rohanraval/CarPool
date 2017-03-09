@@ -1,0 +1,16 @@
+{% extends "fuelcalc/base.html" %}
+{% block content %}
+<form action="{% url 'results' %}" method="POST" >
+	{% csrf_token %}
+	{% for field in form %}
+	<div class="fieldWrapper form-inline">
+		{{ field.label_tag }}
+		{{ field }}
+		<p style="color:red;" id="error-{{ field.auto_id }}"></p>
+	</div>
+	{% endfor %}
+	<input type="submit" class="btn btn-success" value="Submit">
+</form>
+<p>{% if error %}{{ error }}{% endif %}</p>
+
+{% endblock %}
