@@ -10,15 +10,15 @@
 				<td class="col-sm-8">{{ responses.make }} {{ responses.model }} ({{ responses.year }})</td>
 			</tr>
 			<tr>
-				<th class="col-sm-4">Fuel Economy (weighted avg)</th>
+				<th class="col-sm-4">Fuel Economy (avg) </th>
 				<td class="col-sm-8">{{ gasInfo.avgMPG|floatformat:2 }} miles/gallon</td>
 			</tr>
 		</table>
 
 		<table class="table table-hover table-bordered">
 			<tr>
-				<th class="col-sm-4">Trip Info</th>
-				<td class="col-sm-8">Driving from {{ responses.start_city }} to {{ responses.dest_city }}</td>
+				<th class="col-sm-4">Route Info</th>
+				<td class="col-sm-8">{{ responses.start_city }} to {{ responses.dest_city }}</td>
 			</tr>
 			<tr>
 				<th>Distance</th>
@@ -55,7 +55,7 @@
 		<label class="radio-inline">
 			<input type="radio" name="people" id="5people" value="option5">5
 		</label> people
-		<h3>You Pay: <span id="amt" style="color:red">$ {{ gasInfo.tripCost|floatformat:2 }}</span></h3>
+		<h3>Per Person: <span id="amt" style="color:red">$ {{ gasInfo.tripCost|floatformat:2 }}</span></h3>
 	</div>
 
 	{% endif %}
