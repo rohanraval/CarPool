@@ -1,7 +1,7 @@
 # CarPool
 <strong>Ridesharing web application using Python/Django</strong>
 
-<a href="https://www.rohan-carpool.herokuapp.com/">Go to the app now!</a>
+<a href="https://rohan-carpool.herokuapp.com/">Go to the app now!</a>
 
 <p>CarPool is aimed at eliminating the fuss that usually goes like this:</p> 
 <blockquote>"yeah I'll give you a ride, but you got that gas money tho?"<br>
