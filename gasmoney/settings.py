@@ -26,7 +26,7 @@ SECRET_KEY = '*!*r=n0$tzs#9nd39gm%3hmut29g=9%kyfaevs!-8o#2e+wgrv'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	u'thawing-lowlands-30950.herokuapp.com',
+	u'rohan-carpool.herokuapp.com',
 	u'localhost',
 ]
 
