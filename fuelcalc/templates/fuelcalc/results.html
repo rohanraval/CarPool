@@ -1,4 +1,5 @@
 {% extends "fuelcalc/base.html" %}
+{% load static %}
 {% block content %}
 	{% if error %}
 	<p  style="color:red; text-decoration:none;"><a href="/"> &#171; {{ error }} </a></p>
@@ -39,25 +40,23 @@
 	</div>
 
 	<div class="col-sm-6">
-		<h5>Splitting the fare? </h5>
-		<label class="radio-inline">
-			<input type="radio" name="people" id="1person" value="option1" checked>1
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="people" id="2people" value="option2">2
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="people" id="3people" value="option3">3
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="people" id="4people" value="option4">4
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="people" id="5people" value="option5">5
-		</label> people
-		<h3>Per Person: <span id="amt" style="color:red">$ {{ gasInfo.tripCost|floatformat:2 }}</span></h3>
+		<h4>Splitting the fare? </h4>
+		<p>Select the number of riders:</p>
+		<div class="btn-group">
+			<button type="button" class="split btn btn-primary active" id="b1"> 1 </button>
+			<button type="button" class="split btn btn-primary" id="b2"> 2 </button>
+			<button type="button" class="split btn btn-primary" id="b3"> 3 </button>
+			<button type="button" class="split btn btn-primary" id="b4"> 4 </button>
+			<button type="button" class="split btn btn-primary" id="b5"> 5 </button>
+		</div>
+		<br><br>
+		<h4>Cost Per Person: <span id="amt" style="color:red">${{ gasInfo.tripCost|floatformat:2 }}</span></h4>
+		<br>
+		<div class="">
+			<h5>Pay or request your friends using
+			<a href="http://www.venmo.com"><img class="img-thumbnail" src="{% static 'fuelcalc/logoblue.png' %}" alt="Venmo" style="height:auto; width:50px;"></a>!</h5>
+		</div>
 	</div>
-
 	{% endif %}
 
 {% endblock %}

@@ -80,22 +80,27 @@ $(document).ready( function() {
 		});
 	});
 
-	$('input[type=radio][name=people]').change(function() {
+	$(".split").click(function() {
 		var totalCost = parseFloat($("#cost").text().substr(1));
-        if (this.value == 'option1') {
-			$("#amt").html("$ " + totalCost.toFixed(2));
+        if (this.id == 'b1') {
+			$("#amt").html("$" + totalCost.toFixed(2));
+			$(this).addClass('active').siblings().removeClass('active');
         }
-        else if (this.value == 'option2') {
-            $("#amt").html("$ " + (totalCost/2.0).toFixed(2));
+        else if (this.id == 'b2') {
+            $("#amt").html("$" + (totalCost/2.0).toFixed(2));
+			$(this).addClass('active').siblings().removeClass('active');
         }
-		else if (this.value == 'option3') {
-            $("#amt").html("$ " + (totalCost/3.0).toFixed(2));
+		else if (this.id == 'b3') {
+            $("#amt").html("$" + (totalCost/3.0).toFixed(2));
+			$(this).addClass('active').siblings().removeClass('active');
         }
-		else if (this.value == 'option4') {
-            $("#amt").html("$ " + (totalCost/4.0).toFixed(2));
+		else if (this.id == 'b4') {
+            $("#amt").html("$" + (totalCost/4.0).toFixed(2));
+			$(this).addClass('active').siblings().removeClass('active');
         }
-		else if (this.value == 'option5') {
-            $("#amt").html("$ " + (totalCost/5.0).toFixed(2));
+		else if (this.id == 'b5') {
+            $("#amt").html("$" + (totalCost/5.0).toFixed(2));
+			$(this).addClass('active').siblings().removeClass('active');
         }
     });
 
