@@ -25,7 +25,7 @@ SECRET_KEY = '*!*r=n0$tzs#9nd39gm%3hmut29g=9%kyfaevs!-8o#2e+wgrv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'thawing-lowlands-30950.herokuapp.com',]
 
 
 # Application definition
