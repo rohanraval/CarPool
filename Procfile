@@ -1,1 +1,1 @@
-web: gunicorn gasmoney.wsgi
+web: gunicorn gasmoney.wsgi --log-file -
