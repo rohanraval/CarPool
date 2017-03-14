@@ -105,7 +105,7 @@ $(document).ready( function() {
 		changeVenmoAmtVal($("#costPerPerson").html());
     });
 
-
+	changeVenmoAmtVal($("#costPerPerson").html());
 })
 
 function changeVenmoAmtVal(value) {
