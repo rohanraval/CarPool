@@ -83,25 +83,31 @@ $(document).ready( function() {
 	$(".split").click(function() {
 		var totalCost = parseFloat($("#cost").text().substr(1));
         if (this.id == 'b1') {
-			$("#amt").html("$" + totalCost.toFixed(2));
+			$("#costPerPerson").html("$" + totalCost.toFixed(2));
 			$(this).addClass('active').siblings().removeClass('active');
         }
         else if (this.id == 'b2') {
-            $("#amt").html("$" + (totalCost/2.0).toFixed(2));
+            $("#costPerPerson").html("$" + (totalCost/2.0).toFixed(2));
 			$(this).addClass('active').siblings().removeClass('active');
         }
 		else if (this.id == 'b3') {
-            $("#amt").html("$" + (totalCost/3.0).toFixed(2));
+            $("#costPerPerson").html("$" + (totalCost/3.0).toFixed(2));
 			$(this).addClass('active').siblings().removeClass('active');
         }
 		else if (this.id == 'b4') {
-            $("#amt").html("$" + (totalCost/4.0).toFixed(2));
+            $("#costPerPerson").html("$" + (totalCost/4.0).toFixed(2));
 			$(this).addClass('active').siblings().removeClass('active');
         }
 		else if (this.id == 'b5') {
-            $("#amt").html("$" + (totalCost/5.0).toFixed(2));
+            $("#costPerPerson").html("$" + (totalCost/5.0).toFixed(2));
 			$(this).addClass('active').siblings().removeClass('active');
         }
+		changeVenmoAmtVal($("#costPerPerson").html());
     });
 
+
 })
+
+function changeVenmoAmtVal(value) {
+	$("#amount").val(value);
+}

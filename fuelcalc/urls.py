@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^ajax/validate_dest_zip', views.is_dest_zip_valid, name='validate_dest_zip'),
 	url(r'^ajax/year_processing', views.year_processing, name='year_processing'),
 	url(r'^ajax/get_models', views.get_models, name='get_models'),
+	url(r'^venmo/', views.venmo, name='venmo'),
 ]

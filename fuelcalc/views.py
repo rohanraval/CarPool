@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.utils.encoding import escape_uri_path
+from django.views.decorators.clickjacking import xframe_options_exempt
 from .forms import CarForm
 import scraper
 
@@ -56,6 +58,7 @@ def index(request):
 	form = CarForm()
 	return render(request, 'fuelcalc/index.html', {'form': form })
 
+# @xframe_options_exempt
 def results(request):
 	responses = {}
 	gasInfo = {}
@@ -75,3 +78,13 @@ def results(request):
 	else:
 		return
 	return render(request, 'fuelcalc/results.html', {'responses':responses, 'gasInfo': gasInfo, 'error': error })
+
+def venmo(request):
+	url = "https://venmo.com/"
+	if request.method == 'POST':
+		url += request.POST.get("recepient") + "?"
+		url += "txn=" + request.POST.get("tnx-type")
+		url += "&amount=" + request.POST.get("amount")[1:]
+		if request.POST.get("note") != "":
+			url += "&note=" + escape_uri_path(request.POST.get("note"))
+		return HttpResponseRedirect(url);

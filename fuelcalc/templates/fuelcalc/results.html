@@ -4,7 +4,8 @@
 	{% if error %}
 	<p  style="color:red; text-decoration:none;"><a href="/"> &#171; {{ error }} </a></p>
 	{% else %}
-	<div class="col-sm-6">
+	<div class="col-sm-5">
+		<h4>Trip Information</h4>
 		<table class="table table-hover table-bordered">
 			<tr>
 				<th class="col-sm-4">Car Info</th>
@@ -39,7 +40,7 @@
 		</table>
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-3">
 		<h4>Splitting the fare? </h4>
 		<p>Select the number of riders:</p>
 		<div class="btn-group">
@@ -50,12 +51,41 @@
 			<button type="button" class="split btn btn-primary" id="b5"> 5 </button>
 		</div>
 		<br><br>
-		<h4>Cost Per Person: <span id="amt" style="color:red">${{ gasInfo.tripCost|floatformat:2 }}</span></h4>
+		<h4>Cost Per Person: <span id="costPerPerson" style="color:red">${{ gasInfo.tripCost|floatformat:2 }}</span></h4>
 		<br>
-		<div class="">
-			<h5>Pay or request your friends using
-			<a href="http://www.venmo.com"><img class="img-thumbnail" src="{% static 'fuelcalc/logoblue.png' %}" alt="Venmo" style="height:auto; width:50px;"></a>!</h5>
-		</div>
+	</div>
+	<div class="col-sm-4">
+		<h4>Pay or charge your friends using
+		<a href="http://www.venmo.com"><img class="img-thumbnail" src="{% static 'fuelcalc/logoblue.png' %}" alt="Venmo" style="height:auto; width:50px;"></a>!</h4>
+
+		<form action="{% url 'venmo' %}" method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+    		<label for="tnx-type">Transaction type:</label>
+			<select class="form-control" name="tnx-type" id="tnx-type" required>
+    			<option value="pay">Pay</option>
+				<option value="request">Request</option>
+    		</select>
+			</div>
+
+			<div class="form-group">
+    		<label for="recepient">Recepient:</label>
+			<input type="text" class="form-control" name="recepient" id="recepient" placeholder="Please enter Venmo username" required>
+			</div>
+
+			<div class="form-group">
+			<label for="amount">Amount: </label>
+			<input type="text" class="form-control" name="amount" id="amount" required>
+	    	</div>
+
+			<div class="form-group">
+			<label for="note">Note:</label>
+	    	<input type="text" class="form-control" name="note" id="note" value="Thanks for the ride! -Paid using CarPool.">
+			</div>
+
+			<input type="submit" class="btn btn-primary" value="Venmo!">
+		</form>
+
 	</div>
 	{% endif %}
 
