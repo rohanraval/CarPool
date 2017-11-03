@@ -52,7 +52,7 @@ def getAvgMPG(year, make, model):
 	return float(avgMPG)
 
 def getDistance(start, dest):
-	url = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + str(start) + "&destinations=" + str(dest) + "&mode=driving&&key=AIzaSyAUb-xITvCtfd7BP9dUpV9GSfyLW4LEV5I"
+	url = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + str(start) + ",USA&destinations=" + str(dest) + ",USA&mode=driving&&key=AIzaSyBcZgB4kHNoJ8_r5Ehyfm6n-D4Y6VX-_Tg"
 	request = requests.get(url)
 	data = request.text
 	soup = BeautifulSoup(data, "xml")
